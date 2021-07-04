@@ -1,0 +1,27 @@
+nav{
+    padding: 10px;
+}
+
+h2{
+    font-size: 300% !important;
+    margin: 10px 0 10px 0 !important;
+}
+
+.card{
+    background-color: rgb(255, 0, 0);
+    height:200px;
+    display: inline-flex !important;
+    border:none;
+}
+
+.contentBody{
+    padding-top: 1%;
+}
+
+.introBlock{
+    height:300px;
+}
+
+#mocha h2 {
+    font-size: 12px !important;
+}
