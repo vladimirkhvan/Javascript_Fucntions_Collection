@@ -1,16 +1,23 @@
+/* Html tags */
+
+body{
+    font-family: 'Existence Light', sans-serif;                           
+}
+
 nav{
     padding: 10px;
 }
 
 h2{
-    font-size: 300% !important;
-    margin: 10px 0 10px 0 !important;
+    font-size: 300%;
+    margin: 10px 0 10px 0;
 }
 
+/* Classes */
+
 .card{
-    background-color: rgb(255, 0, 0);
     height:200px;
-    display: inline-flex !important;
+    display: inline-flex;
     border:none;
 }
 
@@ -22,6 +29,67 @@ h2{
     height:300px;
 }
 
+.navbar-header {
+    float: left;
+    padding: 15px;
+    width: 100%;
+}
+
+.navbar-brand {
+    float:none;
+    font-size: 200%;
+}
+
+.nav-item{
+    padding: 0 1em 0 1em;
+}
+
+.nav-item>a{
+    font-size: 120%;
+}
+
+.nav-item>a:hover{
+    color: #FFFFFF;
+}
+
+.footer{
+    padding: 1.5em 0 1.5em 0;
+}
+
+.footerBrand{
+    text-decoration: none;
+    font-size: 130%;
+    color: #D6D6D6;
+}
+
+.footerBody .navbar-nav{
+    flex-direction: row;
+}
+
+
+footer .footerBody li .nav-link{
+    display: list-item;
+}
+
+.bg-dark {
+    background-color: #0A0A0A!important;
+}
+
+/* ids */
+
+
+
+/* mixed */
+
 #mocha h2 {
-    font-size: 12px !important;
+    font-size: 12px;
+}
+
+
+/* MEDIA */
+
+@media (max-width: 1366px) {
+    .navbar-header{
+        font-size: 140%;
+    }
 }
