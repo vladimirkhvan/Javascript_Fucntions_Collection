@@ -2,8 +2,10 @@ window.onload = function(){
     
 
 
-
 }
+
+
+
 
 // constuctor for accumulating some values
 // function Accumulator(startingValue){
@@ -54,40 +56,6 @@ window.onload = function(){
 //     return 0;
 //   }
 
-// function duplicateEncode(word){
-//     word = word.toLowerCase();
-//     let wordArray = word.split("");
-//     let isUnique;
-
-//     for(let i = 0; i<wordArray.length; i++){
-//         if(wordArray[i]==")"){
-//             wordArray[i] = "rep";
-//         }
-//     }
-
-//     for(let i = 0; i<wordArray.length; i++){
-//         isUnique = true;
-//         for(let j = wordArray.length-1; j>i; j--){
-//             if(wordArray[i]==wordArray[j]){
-//                 wordArray[j] = ")";
-//                 isUnique = false;
-//             }
-//         }
-//         if(!isUnique){
-//             wordArray[i] = ")";
-//         }
-
-//     }
-
-//     for(let i = 0; i<wordArray.length; i++){
-//         if(wordArray[i]!=")"){
-//             wordArray[i] = "(";
-//         }
-//     }
-
-//     return wordArray.join("");
-// }
-
 // function pow(number, n){
 //     if (n < 0) return NaN;
 //     if (Math.round(n) != n) return NaN;
@@ -99,27 +67,6 @@ window.onload = function(){
     
 //     return result;
 // }
-
-// "din"      =>  "((("
-// "recede"   =>  "()()()"
-// "Success"  =>  ")())())"
-// "(( @"     =>  "))((" 
-
-// function highAndLow(numbers) {
-//     let array = numbers.split(" ");
-//     let max = min = array[0];
-    
-//     for(let i = 0; i<array.length - 1; i++){
-//       if(max<+array[i+1]){
-//         max=array[i+1];
-//       }
-//       if(min>+array[i+1]){
-//         min=array[i+1];
-//       }
-//     }
-    
-//     return `${max} ${min}`;
-//   }
 
 // function pow(number, n){
 //     let result = 1;
@@ -134,20 +81,4 @@ window.onload = function(){
 //         return b;
 //     }
 //     return a;
-// }
-
-// function showElementaryNumbers(){ //shows all elementary numbers up to 100
-//     let isElementary;   //boolean value
-
-//     for(let i = 2 ; i<100; i++){   
-//         isElementary = true;
-//         for(let k = 2; k<i; k++){
-//             if(i%k == 0){
-//                 isElementary = false;   //if false => number is not elementary
-//             }
-//         }
-//         if(isElementary){
-//             console.log(`number ${i} is an elementary number`);
-//         }
-//     }
 // }
