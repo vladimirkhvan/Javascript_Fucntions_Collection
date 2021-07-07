@@ -1,9 +1,8 @@
 window.onload = function(){
     
-    console.log(readNumber(3));
+    
 
 }
-
 
 // NUMBERS WITH PRECISION ISSUES
 

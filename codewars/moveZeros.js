@@ -13,6 +13,6 @@ var moveZeros = function (arr) {
     for(let i = 0; i<counter; i++){
       arr.push(0);
     }
-    
+
     return arr;
   }
