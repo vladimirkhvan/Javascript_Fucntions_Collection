@@ -1,12 +1,13 @@
 window.onload = function () {
 
-    let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
-    let petya = { name: "Петя", surname: "Иванов", id: 2 };
-    let masha = { name: "Маша", surname: "Петрова", id: 3 };
+    let users = [ 1, 2, 3];
 
-    let users = [ vasya, petya, masha ];
-
-    console.log(some(users));
+    console.log(shuffle(users));
+    console.log(shuffle(users));
+    console.log(shuffle(users));
+    console.log(shuffle(users));
+    console.log(shuffle(users));
+    console.log(shuffle(users));
 
 }
 
@@ -83,6 +84,14 @@ function extractNames(arr){
 function some(arr){
     arr.map(function (item) {
     } );
+}
+
+function sortByName(arr){
+    return arr.reduce((a,b) => a.age - b.age); 
+}
+
+function shuffle(arr){
+    return arr.sort(() => Math.random()*(-1) + 0.5);
 }
 
 // ARRAYS
