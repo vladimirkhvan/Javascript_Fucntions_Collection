@@ -1,9 +1,12 @@
 window.onload = function () {
 
-    let arr = ["HTML", "JavaScript", "CSS"];
+    let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+    let petya = { name: "Петя", surname: "Иванов", id: 2 };
+    let masha = { name: "Маша", surname: "Петрова", id: 3 };
 
-    console.log(sortClear(arr));
-    console.log(arr);
+    let users = [ vasya, petya, masha ];
+
+    console.log(some(users));
 
 }
 
@@ -46,17 +49,40 @@ function sortClear(arr) {
         return -1;
     });
 }
-
+//snippet from learn-javascript.ru
 function Calculator(){
+
+    this.methods = {
+        "-" : (a,b) => a-b,
+        "+" : (a,b) => a-b,
+    }
+
     this.calculate = function(str){
-        str.split(" ");
-        if(str[1] == "+"){ return str[0] + str[2]}
-        return str[0] - str[2];
+        strAsArr = str.split(" ");
+        
+        a = +strAsArr[0];
+        b = +strAsArr[2];
+        operand = strAsArr[1];
+
+        if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+            return NaN;
+        }
+
+        return this.methods[operand](a,b);
     }
 
     this.addMethod = function(funcName, func){
-        
+        this.methods[funcName] = func;
     }
+}
+
+function extractNames(arr){
+    return arr.map(item => item.name);
+}
+
+function some(arr){
+    arr.map(function (item) {
+    } );
 }
 
 // ARRAYS
