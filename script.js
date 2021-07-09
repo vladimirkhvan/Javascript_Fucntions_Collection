@@ -1,32 +1,87 @@
-window.onload = function(){
-    
-    
+window.onload = function () {
 
+    let arr = ["HTML", "JavaScript", "CSS"];
+
+    console.log(sortClear(arr));
+    console.log(arr);
+
+}
+
+
+// ARRAY METHODS
+
+function filterRange(arr, start, end) {
+    return arr.filter(item => item >= start && item <= end);
+}
+
+function filterRangeInPlace(arr, start, end) {
+
+    let arrNew = arr.filter(item => item >= start && item <= end);
+
+    arr.length = 0;
+
+    for (let i = 0; i < arrNew.length; i++) {
+        arr.push(arrNew[i]);
+    }
+
+    return arr;
+}
+
+function sortFromBiggest(arr) {
+    return arr.sort((a, b) => b - a);
+}
+
+function sortClear(arr) {
+    let tempArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        tempArr.push(arr[i]);
+    }
+    return tempArr.sort(function (a,b) {
+        if(a>b){
+            return 1;
+        }
+        if(a == b){
+            return 0;
+        }
+        return -1;
+    });
+}
+
+function Calculator(){
+    this.calculate = function(str){
+        str.split(" ");
+        if(str[1] == "+"){ return str[0] + str[2]}
+        return str[0] - str[2];
+    }
+
+    this.addMethod = function(funcName, func){
+        
+    }
 }
 
 // ARRAYS
 
-    function someOperation(){
-        let styles = ["Jazz", "Blues"];
-        styles.push("Rock-n-roll");
-        styles[Math.round(styles.length/2)] = "Classic";
-        console.log(styles.shift());
-        styles.unshift("Raggie");
-        styles.unshift("Rap");
-    }
+    // function someOperation(){
+    //     let styles = ["Jazz", "Blues"];
+    //     styles.push("Rock-n-roll");
+    //     styles[Math.round(styles.length/2)] = "Classic";
+    //     console.log(styles.shift());
+    //     styles.unshift("Raggie");
+    //     styles.unshift("Rap");
+    // }
 
-    function sumInput(){
-        let sum = 0, interValue;
+    // function sumInput(){
+    //     let sum = 0, interValue;
 
-        while(true){
-            if((interValue = prompt("Input value:", 3)) == null){ 
-                return sum;
-            }
-            sum += +interValue;
-        }
+    //     while(true){
+    //         if((interValue = prompt("Input value:", 3)) == null){ 
+    //             return sum;
+    //         }
+    //         sum += +interValue;
+    //     }
 
-            
-    }
+
+    // }
 
 // STRING
 
@@ -143,7 +198,7 @@ window.onload = function(){
 //     for(let i = 0; i<n; i++){
 //         result *=number;
 //     }
-    
+
 //     return result;
 // }    
 
