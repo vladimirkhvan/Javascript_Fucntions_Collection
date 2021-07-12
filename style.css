@@ -1,32 +1,18 @@
 /* Html tags */
 
 body{
-    font-family: 'Existence Light', sans-serif;                           
+    font-family: 'Bebas', sans-serif;                                                            
 }
 
 nav{
     padding: 10px;
 }
 
-h2{
-    font-size: 300%;
-    margin: 10px 0 10px 0;
-}
-
 /* Classes */
-
-.card{
-    height:200px;
-    display: inline-flex;
-    border:none;
-}
 
 .contentBody{
     padding-top: 1%;
-}
-
-.introBlock{
-    height:300px;
+    font-family: 'Barlow Condensed', sans-serif;
 }
 
 .navbar-header {
@@ -73,6 +59,38 @@ footer .footerBody li .nav-link{
 
 .bg-dark {
     background-color: #0A0A0A!important;
+}
+
+.card{
+    display: inline-flex;
+    border:none;
+    align-items: stretch;
+    text-align: center;
+}
+
+.cardBody, .cardImage{
+    padding: 2% 0 2% 0;
+}
+
+.cardBody{
+    text-align: left;
+    padding-left: 2%;
+}
+
+.cardHeader{
+}
+
+.cardText{
+    font-size: 1.2em;
+}
+
+.cardHeader h1{
+    font-size: 4em;
+}
+
+.spaceMaker{
+    height: 106px;
+    width: 100%;
 }
 
 /* ids */
