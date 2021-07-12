@@ -19,8 +19,5 @@ console.log(str);
     return false;
   }
   
-  if( str.length > 140 ){
-    return false;
-  }
   
   return "#" + str.join("");
