@@ -1,15 +1,32 @@
 window.onload = function () {
 
-    let users = [ 1, 2, 3];
+    
+let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
-    console.log(shuffle(users));
-    console.log(shuffle(users));
-    console.log(shuffle(users));
-    console.log(shuffle(users));
-    console.log(shuffle(users));
-    console.log(shuffle(users));
+alert( aclean(arr) ); // "nap,teachers,ear" or "PAN,cheaters,era"
 
 }
+
+// MAP SET
+
+function unique(arr) {
+    return Array.from(new Set(arr));
+}
+
+function aclean(arr){
+    arr = arr.map(word => 
+        {
+            return word.toLowerCase().split("").sort().join("");
+        }
+    );
+
+    return Array.from(new Set(arr)); 
+}
+
+// map all words
+// sort every word with alph
+// make set
+
 
 
 // ARRAY METHODS
