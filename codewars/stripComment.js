@@ -17,7 +17,7 @@ function solutionOld(input, markers) {
     }
 
     for (let i = 0; i < markersIndex.length; i++) {
-        if (markersIndex[i])
+        if (markersIndex[i]);
   }
 
     console.log(markersIndex);
