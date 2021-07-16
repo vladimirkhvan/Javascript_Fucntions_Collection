@@ -7,21 +7,57 @@ alert( aclean(arr) ); // "nap,teachers,ear" or "PAN,cheaters,era"
 
 }
 
+// WEAK SET, WEAK MAP
+
+    let messages = [
+        {text: "Hello", from: "John"},
+        {text: "How goes?", from: "John"},
+        {text: "See you soon", from: "Alice"}
+    ];
+
+    let readMessages = new WeakSet();
+
+    // Два сообщения были прочитаны
+    readMessages.add(messages[0]);
+    readMessages.add(messages[1]);
+    // readMessages содержит 2 элемента
+
+    // ...давайте снова прочитаем первое сообщение!
+    readMessages.add(messages[0]);
+    // readMessages до сих пор содержит 2 элемента
+
+    // Вопрос: было ли сообщение message[0] прочитано?
+    alert("Read message 0: " + readMessages.has(messages[0])); // true
+
+    messages.shift();
+    // теперь readMessages содержит 1 элемент (хотя технически память может быть очищена позже)
+
+    let messages = [
+        {text: "Hello", from: "John"},
+        {text: "How goes?", from: "John"},
+        {text: "See you soon", from: "Alice"}
+      ];
+      
+      let readMap = new WeakMap();
+      
+      readMap.set(messages[0], new Date(2017, 1, 1));
+      // Объект Date мы рассмотрим позднее
+
 // MAP SET
 
-function unique(arr) {
-    return Array.from(new Set(arr));
-}
+    function unique(arr) {
+        return Array.from(new Set(arr));
+    }
 
-function aclean(arr){
-    arr = arr.map(word => 
-        {
-            return word.toLowerCase().split("").sort().join("");
-        }
-    );
+    function aclean(arr){
+        arr = arr.map(word => 
+            {
+                return word.toLowerCase().split("").sort().join("");
+            }
+        );
 
-    return Array.from(new Set(arr)); 
-}
+        return Array.from(new Set(arr)); 
+    }
 
 // map all words
 // sort every word with alph
@@ -31,85 +67,85 @@ function aclean(arr){
 
 // ARRAY METHODS
 
-function filterRange(arr, start, end) {
-    return arr.filter(item => item >= start && item <= end);
-}
-
-function filterRangeInPlace(arr, start, end) {
-
-    let arrNew = arr.filter(item => item >= start && item <= end);
-
-    arr.length = 0;
-
-    for (let i = 0; i < arrNew.length; i++) {
-        arr.push(arrNew[i]);
+    function filterRange(arr, start, end) {
+        return arr.filter(item => item >= start && item <= end);
     }
 
-    return arr;
-}
+    function filterRangeInPlace(arr, start, end) {
 
-function sortFromBiggest(arr) {
-    return arr.sort((a, b) => b - a);
-}
+        let arrNew = arr.filter(item => item >= start && item <= end);
 
-function sortClear(arr) {
-    let tempArr = [];
-    for (let i = 0; i < arr.length; i++) {
-        tempArr.push(arr[i]);
-    }
-    return tempArr.sort(function (a,b) {
-        if(a>b){
-            return 1;
-        }
-        if(a == b){
-            return 0;
-        }
-        return -1;
-    });
-}
-//snippet from learn-javascript.ru
-function Calculator(){
+        arr.length = 0;
 
-    this.methods = {
-        "-" : (a,b) => a-b,
-        "+" : (a,b) => a-b,
-    }
-
-    this.calculate = function(str){
-        strAsArr = str.split(" ");
-        
-        a = +strAsArr[0];
-        b = +strAsArr[2];
-        operand = strAsArr[1];
-
-        if (!this.methods[op] || isNaN(a) || isNaN(b)) {
-            return NaN;
+        for (let i = 0; i < arrNew.length; i++) {
+            arr.push(arrNew[i]);
         }
 
-        return this.methods[operand](a,b);
+        return arr;
     }
 
-    this.addMethod = function(funcName, func){
-        this.methods[funcName] = func;
+    function sortFromBiggest(arr) {
+        return arr.sort((a, b) => b - a);
     }
-}
 
-function extractNames(arr){
-    return arr.map(item => item.name);
-}
+    function sortClear(arr) {
+        let tempArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            tempArr.push(arr[i]);
+        }
+        return tempArr.sort(function (a,b) {
+            if(a>b){
+                return 1;
+            }
+            if(a == b){
+                return 0;
+            }
+            return -1;
+        });
+    }
+    //snippet from learn-javascript.ru
+    function Calculator(){
 
-function some(arr){
-    arr.map(function (item) {
-    } );
-}
+        this.methods = {
+            "-" : (a,b) => a-b,
+            "+" : (a,b) => a-b,
+        }
 
-function sortByName(arr){
-    return arr.reduce((a,b) => a.age - b.age); 
-}
+        this.calculate = function(str){
+            strAsArr = str.split(" ");
 
-function shuffle(arr){
-    return arr.sort(() => Math.random()*(-1) + 0.5);
-}
+            a = +strAsArr[0];
+            b = +strAsArr[2];
+            operand = strAsArr[1];
+
+            if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+                return NaN;
+            }
+
+            return this.methods[operand](a,b);
+        }
+
+        this.addMethod = function(funcName, func){
+            this.methods[funcName] = func;
+        }
+    }
+
+    function extractNames(arr){
+        return arr.map(item => item.name);
+    }
+
+    function some(arr){
+        arr.map(function (item) {
+        } );
+    }
+
+    function sortByName(arr){
+        return arr.reduce((a,b) => a.age - b.age); 
+    }
+
+    function shuffle(arr){
+        return arr.sort(() => Math.random()*(-1) + 0.5);
+    }
 
 // ARRAYS
 
