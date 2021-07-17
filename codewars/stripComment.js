@@ -1,64 +1,48 @@
-
-
-function solutionOld(input, markers) {
-
-
-    console.log(input);
-    console.log(markers);
-
-    let markersIndex = [], newLineIndex = [];
-
-    for (let i = 0; i < input.length; i++) {
-        if (markers.includes(input[i])) {
-            markersIndex.push(i);
-        } else if (input[i] == "\n") {
-            newLineIndex.push(i);
-        }
-    }
-
-    for (let i = 0; i < markersIndex.length; i++) {
-        if (markersIndex[i]);
-  }
-
-    console.log(markersIndex);
-    console.log(newLineIndex);
-    input = input.split('');
-    console.log(input);
-
-};
-
-
 function solution(input, markers) {
-
-
-    console.log(input);
 
     input = input.split("");
 
     let go = false;
+    let inputLength = input.length;
 
-    for (let i = 0; i < input.length; i++) {
+    for (let i = 0; i < inputLength; i++) {
         if (input[i] == "\n") {
             go = false;
             continue;
         }
+      
+        if (markers.includes(input[i])) {
+            go = true;
+        }
 
         if (go) {
             input.splice(i, 1);
-            continue;
+            i--;
+            inputLength--;
         }
 
-        if (markers.includes(input[i])) {
-            input.splice(i, 1);
-            go = true;
-        }
     }
+  
+    go = true;
+    inputLength = input.length;
+  
+    for (let i = inputLength-1; i >= 0; i--) {
+      
+      if(input[i] == "\n"){
+        go = true;
+        continue;
+      }
+      
+      if(input[i] == " " && go){
+          input.splice(i, 1);
+      } else {
+        go = false;
+      }
 
-    input = input.join("");
-
-    console.log(input);
-
-};
+    }
+  
+    return input.join("");
+};  
 
 
 // find indexes of all markes 
