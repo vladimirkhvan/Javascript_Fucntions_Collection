@@ -1,22 +1,7 @@
 window.onload = function () {
 
-
+    
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
