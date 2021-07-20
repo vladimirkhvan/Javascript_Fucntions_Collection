@@ -15,7 +15,7 @@ function getPINs(observed) {
             tempArr.push(0);
             tempArr.push(8);
             arrOfPossibleNumbers.push(tempArr);
-            break;
+            continue;
         }
         if (observed[i] == 8) {
             tempArr.push(0);
@@ -37,38 +37,53 @@ function getPINs(observed) {
         arrOfPossibleNumbers.push(tempArr);
     }
 
+    return findAllCombinations(arrOfPossibleNumbers);
+
 }
 
-function findAllCombinations(arr){
+function findAllCombinations(arr) {
 
-    if(arr.length<2){
+    if (arr.length < 2) {
         let resultArr = arr[0];
         resultArr = resultArr.map(item => item.toString());
         return resultArr;
     }
-    
+
     let resultArr = arr[arr.length - 1];
 
-    for(let i = arr.length - 2; i >= 0; i--){
+    for (let i = arr.length - 2; i >= 0; i--) {
 
-        for(let j = 0; j < arr[i].length; j++){
+        let resultArrLength = resultArr.length;
 
-            for(let k = 0; k < resultArr.length; k++){
+        for (let j = 0; j < arr[i].length; j++) {
+
+            for (let k = 0; k < resultArrLength; k++) {
 
                 resultArr.push(arr[i][j].toString() + resultArr[k].toString());
 
             }
 
         }
-        
-        for(let j = 0; j < resultArr.length; j++){
 
-            resultArr.push(resultArr[i].split("").reverse().join(""));
-
+        for(let i = 0; i<resultArrLength; i++){
+            resultArr.shift();
         }
+
+        resultArrLength = resultArr.length;
+
 
     }
 
-    return Array.from(new Set(resultArr));;
+    return Array.from(new Set(resultArr));
     
 }
+
+// observed is an array that has unknown size
+
+//  we can find value in array by computations 
+//  worst case is when we will need 5 number
+//  number itself, number-1, number+1, number+3,number-3
+
+// make 4 arrays of possible numbers
+// iterate through and find all the possible solutions
+// while iterating place solutions in array
