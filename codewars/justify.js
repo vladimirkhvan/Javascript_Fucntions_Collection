@@ -1,10 +1,23 @@
+function justifyString(wordsArr, length, currentLineLength) {
+    if (wordsArr.length < 3) {
+        return;
+    }
+
+    while (true) {
+        for (let j = 0; j < wordsArr.length - 2; j++) {
+            if (currentLineLength == length + 1) {
+                return;
+            }
+            wordsArr[j] += " ";
+            currentLineLength += 1;
+        }
+    }
+}
+
 var justify = function (str, len) {
 
     let newStr = [];
     let currentLineLength = 0;
-
-    console.log(str);
-    console.log(len);
 
     str = str.split(" ");
 
@@ -17,8 +30,8 @@ var justify = function (str, len) {
 
         if (currentLineLength + wordLength[i] <= len) {
 
-            currentLineLength += wordLength[i] + 1;
             currentLine.push(str[i]);
+            currentLineLength += (wordLength[i] + 1);
 
             if (currentLineLength >= len) {
 
@@ -32,7 +45,7 @@ var justify = function (str, len) {
 
         } else {
 
-            currentLineLength = wordLength[i];
+            currentLineLength = wordLength[i] + 1;
 
             currentLine.push("\n");
             newStr.push(currentLine);
@@ -44,10 +57,14 @@ var justify = function (str, len) {
     }
 
     for (let i = 0; i < newStr.length; i++) {
-        newStr[i] = newStr[i].reduce((sum, current) => sum + current.length, 0);
+        justifyString(newStr[i], len, newStr[i].reduce((sum, current) => sum + current.length, 0));
+        if(i != newStr.length -1){
+            newStr[i] = newStr[i].join("");
+        }
     }
+    newStr[newStr.length-1].pop();
+    newStr[newStr.length-1] = newStr[newStr.length-1].join("");
 
-    console.log(newStr);
-    console.log(newStr.join(" "));
+    return newStr.join("");
 
 };
