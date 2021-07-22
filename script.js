@@ -1,73 +1,60 @@
 window.onload = function () {
 
-    console.log(findAllCombinations(    [   [1], [1, 2, 3]  ]   ));
-
+    justify("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis dolor mauris, at elementum ligula tempor eget. In quis rhoncus nunc, at aliquet orci. Fusce at dolor sit amet felis suscipit tristique. Nam a imperdiet tellus. Nulla eu vestibulum urna. Vivamus tincidunt suscipit enim, nec ultrices nisi volutpat ac. Maecenas sit amet lacinia arcu, non dictum justo. Donec sed quam vel risus faucibus euismod. Suspendisse rhoncus rhoncus felis at fermentum. Donec lorem magna, ultricies a nunc sit amet, blandit fringilla nunc. In vestibulum velit ac felis rhoncus pellentesque. Mauris at tellus enim. Aliquam eleifend tempus dapibus. Pellentesque commodo, nisi sit amet hendrerit fringilla, ante odio porta lacus, ut elementum justo nulla et dolor.", 20)
 
 }
 
-// function findAllCombinations(arr) {
 
-//     let resultArr = arr[arr.length - 1];
+var justify = function (str, len) {
 
-//     for (let i = arr.length - 2; i >= 0; i--) {
+    let newStr = [];
+    let currentLineLength = 0;
 
-//         for (let j = 0; j < arr[i].length; j++) {
+    console.log(str);
+    console.log(len);
 
-//             let resultArrLength = resultArr.length;
+    str = str.split(" ");
 
-//             for (let k = 0; k < resultArrLength; k++) {
+    let wordLength = str.map(item => item.length);
 
-//                 resultArr.push(arr[i][j].toString() + resultArr[k].toString());
+    // count amount of lines
+    let currentLine = [];
 
-//             }
+    for (let i = 0; i < wordLength.length; i++) {
 
-//         }
+        if (currentLineLength + wordLength[i] <= len) {
 
-//     }
+            currentLineLength += wordLength[i] + 1;
+            currentLine.push(str[i]);
 
-//     return resultArr;
+            if (currentLineLength >= len) {
 
-// }
+                currentLine.push("\n");
+                newStr.push(currentLine);
 
-function findAllCombinations(arr) {
-
-    if (arr.length < 2) {
-        let resultArr = arr[0];
-        resultArr = resultArr.map(item => item.toString());
-        return resultArr;
-    }
-
-    let resultArr = arr[arr.length - 1];
-
-    for (let i = arr.length - 2; i >= 0; i--) {
-
-        let resultArrLength = resultArr.length;
-
-        for (let j = 0; j < arr[i].length; j++) {
-
-            for (let k = 0; k < resultArrLength; k++) {
-
-                resultArr.push(arr[i][j].toString() + resultArr[k].toString());
+                currentLine = [];
+                currentLineLength = 0;
 
             }
 
-        }
+        } else {
 
-        for(let i = 0; i<resultArr.length; i++){
-            resultArr.shift();
-        }
+            currentLineLength = wordLength[i];
 
-        resultArrLength = resultArr.length;
+            currentLine.push("\n");
+            newStr.push(currentLine);
 
-        
-        for (let j = 0; j < resultArrLength; j++) {
-
-            resultArr.push(resultArr[j].split("").reverse().join(""));
+            currentLine = [];
+            currentLine.push(str[i]);
 
         }
-
     }
 
-    return Array.from(new Set(resultArr));;
-    
-}
+    for (let i = 0; i < newStr.length; i++) {
+        newStr[i] = newStr[i].reduce((sum, current) => sum + current.length, 0);
+    }
+
+    console.log(newStr);
+    console.log(newStr.join(" "));
+
+};
