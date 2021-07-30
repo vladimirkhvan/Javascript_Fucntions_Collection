@@ -1,50 +1,107 @@
 const Calculator = function () {
     this.evaluate = string => {
 
-        let precedence = new Map([
-            ["+", 5],
-            ["-", 5],
-            ["*", 4],
-            ["/", 4],
-        ])
-
         let array = string.split(" ");
-        array.push(")");
 
-        let stack = [];
-        let postfix = [];
+        let postfix = infixToPostfix(array);
 
-        stack.push("(");
+        return evaluatePostfix(postfix);
+    }
+};
 
-        for (let i = 0; i < array.length; i++) {
+function evalMinus(arr) {
+
+    let index;
+    let from = 0;
+
+    while ((index = arr.indexOf("-", from)) != -1) {
+        if (arr[index] == "(") {
+            
+        }
+        arr[index + 1] *= -1;
+    }
+
+}
+
+
+function infixToPostfix(array) {
+
+    let precedence = new Map([
+        ["+", 5],
+        ["-", 5],
+        ["*", 4],
+        ["/", 4],
+    ])
+
+    let stack = [];
+    let postfix = [];
+
+    stack.push("(");
+
+    array.push(")");
+
+    for (let i = 0; i < array.length; i++) {
+
+        if (array[i] == "(") {
+            stack.push(array[i]);
+            continue;
+        }
+
+        if (array[i] == ")") {
 
             let popingElement;
 
-            if (array[i] == "(") {
-                stack.push(array[i]);
-                continue;
-            }
-
-            if (typeOf(+array[i]) == "number") {
-                postfix.push(+array[i]);
-                continue;
-            }
-
-            if (array[i] == ")") {
-                while ((popingElement = stack.pop()) != "(") {
-                    postfix.push(popingElement);
-                }
-                continue;
-            }
-
-            while (array[i] != "(") {
-                for (let j = stack[stack.length - 1]; j >= 0; j--) {
-                    
-                }
+            while ((popingElement = stack.pop()) != "(") {
                 postfix.push(popingElement);
             }
-
+            continue;
         }
 
+        if (precedence.has(array[i])) {
+
+            for (let j = stack.length - 1; j >= 0; j--) {
+                if (stack[j] == "(" || precedence.get(array[i]) <= precedence.get(stack[j])) {
+                    stack.push(array[i]);
+                    break;
+                }
+                postfix.push(stack.pop());
+            }
+            continue
+        }
+
+        postfix.push(array[i]);
+
     }
-};
+
+    return postfix;
+}
+
+function evaluatePostfix(postfixArr) {
+
+    console.log(postfixArr);
+
+    let stack = [];
+    let a, b;
+
+    for (let i = 0; i < postfixArr.length; i++) {
+        console.log(stack);
+
+        let operation = {
+            ["+"](a, b) { return b + a; },
+            ["-"](a, b) { return b - a; },
+            ["*"](a, b) { return b * a; },
+            ["/"](a, b) { return b / a; },
+        }
+
+        if (postfixArr[i] in operation) {
+            a = +stack.pop();
+            b = +stack.pop();
+            stack.push(operation[postfixArr[i]](a, b));
+            continue;
+        }
+
+        stack.push(postfixArr[i]);
+    }
+
+    return stack[0];
+}
