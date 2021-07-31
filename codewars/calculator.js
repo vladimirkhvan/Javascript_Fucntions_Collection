@@ -105,3 +105,51 @@ function evaluatePostfix(postfixArr) {
 
     return stack[0];
 }
+
+
+//
+
+
+function evalMinus(arr) {
+    
+    for(let i = 0; i < arr.length; i++){
+
+    }
+
+}
+
+let calculate = new Calculator;
+
+arr = ("1-2-(5-3*(33-3*4)))").split("");
+
+let from = 0;
+
+console.log(evalMinus(arr, from));
+
+{
+
+    let index;
+
+    if((index = arr.indexOf("-", from)) == -1){
+        return arr;
+    }
+
+    if(typeof(+arr[index + 1]) == "number"){
+        arr[index+1] *= -1;
+    }
+
+    if(arr[index+1] == "("){
+        
+    }
+
+    let index;
+    let from = 0;
+
+    while ((index = arr.indexOf("-", from)) != -1) {
+        if (arr[index] == "(") {
+
+        }
+        arr[index + 1] *= -1;
+    }
+
+}
