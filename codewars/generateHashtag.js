@@ -1,23 +1,19 @@
-console.log(str);
-  
-  if(str === "" || str === " "){
-      return false
-  }
+function generateHashtag(str) {
 
-  str = str.split(" ");
-  
-  console.log(str);
-  
-  
-  for(let i = 0; i<str.length; i++){
-    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
-  }
-  
-   console.log("#" + str.join(""));
-  
-  if( str.length > 140 ){
-    return false;
-  }
-  
-  
-  return "#" + str.join("");
+	let newStr = str.trim();
+
+	if(newStr == ""){
+		return false;
+	}
+
+  newStr = "#" + newStr.split(" ").filter(item => item != " ").map(item => capitalize(item)).join("");
+
+  if(newStr.length > 140){ return false; }
+
+	return newStr;
+
+}
+
+function capitalize(word){
+	return word.charAt(0).toUpperCase() + word.slice(1);
+}
