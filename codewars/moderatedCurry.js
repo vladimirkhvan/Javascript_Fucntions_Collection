@@ -1,0 +1,19 @@
+function CurryIt(func) {
+
+    let result;
+
+    return function curried(...args) {
+        if (args.length == 0){
+            return result;
+        }
+
+        if (args.length >= func.length) {
+            return func.apply(this, args);
+        } else {
+            return function (...args2) {
+                return curried.apply(this, args.concat(args2));
+            }
+        }
+    };
+
+}
