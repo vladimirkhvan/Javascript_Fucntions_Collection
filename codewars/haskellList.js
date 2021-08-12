@@ -1,8 +1,11 @@
 function ArrayComprehension(options) {
 
+    let assert = require('assert');
+    let emptyObj = {generator: ""};
+
     console.log(options);
 
-    if (options.generator == '') { return []; }
+    if (assert.deepEqual(options, emptyObj)) { return []; }
 
     let arr = options.generator.split(",");
 
