@@ -1,0 +1,28 @@
+html{
+    background-color: #fcd5ce;
+}
+
+.box{
+    width: 400px;
+    height: 400px;
+
+    background-color: #f8edeb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #fec89a;
+
+    border-radius: 20%;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.clock #clock{
+    font-size: 50px;
+}
