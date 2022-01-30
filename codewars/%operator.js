@@ -1,0 +1,1 @@
+const remainder = (D, d) => D - d*Math.floor(D/d);
