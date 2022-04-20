@@ -1,0 +1,13 @@
+.card{
+    border: 1px solid black;
+    margin:40px;
+    padding: 20px;
+
+    position: relative;
+}
+
+a{
+    position: absolute;
+    right:20px;
+    top: 20px;
+}
